@@ -1,28 +1,27 @@
 ﻿<?php
+
 $email = '';
 $pass = '';
-$errors = array('email' =>  '', 'pass'=>'', 'total'=>'');
+$error = array("user"=>'',
+                "pass"=>'',
+                "total"=>'');
+
 if (isset($_POST['submit'])){
     // checking username input filled 
     if (empty($_POST['user'])){
-        $error['user'] = "Username required <br>";
+        $error['user'] = "این فیلد اجباری است <br>";
     }
     else {
         $user = $_POST['user'];
         if (!preg_match('/^[a-zA-Z\w]+$/', $user)){
-            $error['user'] = "Username must be include just lettes, numbers or underscore <br>";
+            $error['user'] = "فقط شامل حروف میشود <br>";
         }
     }
     // checking Password input filled 
     if (empty($_POST['pass'])){
-        $error['pass'] = "Password required <br>";
+        $error['pass'] = "رمز عبور اجباری است <br>";
     }
-    else {
-        $pass = $_POST['pass'];
-        if (!preg_match('/^[a-zA-Z\w]+$/', $pass)){
-            $error['pass'] = "Password must be include just lettes, numbers or underscore <br>";
-        }
-    }
+    
 
     if (array_filter($error)){
         $error['total'] = "There are some errors in your sign-up form";
@@ -78,8 +77,8 @@ if (isset($_POST['submit'])){
 
 
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">ایمیل خود را وارد کنید</label>
-                    <input type="Email" class="form-control" name="Email" >
+                    <label for="user" class="form-label">نام کاربری خود را وارد کنید</label>
+                    <input type="text" class="form-control" name="user" >
 
 
                 </div>
